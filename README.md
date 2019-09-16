@@ -10,3 +10,6 @@
 
 6) Observer: Observer is a behavioral design pattern that lets you define a subscription mechanism to notify multiple objects about any events that happen to the object they’re observing.
 
+7) State: State is a behavioral design pattern that allows an object to change the behavior when its internal state changes.
+
+8) Facade: Facade is a structural design pattern that provides a simplified (but limited) interface to a complex system of classes, library or framework.
