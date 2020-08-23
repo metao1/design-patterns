@@ -2,6 +2,7 @@ package com.metao.dp.state;
 
 import java.util.ArrayList;
 import java.util.List;
+
 public class Player {
     private State state;
     private boolean playing = false;
