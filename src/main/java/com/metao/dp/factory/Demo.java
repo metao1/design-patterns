@@ -14,7 +14,7 @@ public class Demo {
      */
     static void configure() {
         String osType = System.getProperty("os.name");
-        if (osType.equals("Windows 10") || osType.equals("Linux") ) {
+        if (osType.equals("Windows 10") || osType.equals("Linux") || osType.equals("Mac OS X") ) {
             dialog = new WindowsDialog();
         } else {
             dialog = new HtmlDialog();

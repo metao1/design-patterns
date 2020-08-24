@@ -1,5 +1,9 @@
 package com.metao.dp.abstractfactory;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class TestDesignPatterns {
 
     public static void main(String[] args) {
