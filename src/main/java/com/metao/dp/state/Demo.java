@@ -1,4 +1,7 @@
-package com.metao.dp.state;
+package com.metao.dp.state.another;
+
+import com.metao.dp.state.another.Player;
+import com.metao.dp.state.another.UI;
 
 /**
  * Demo class. Everything comes together here.

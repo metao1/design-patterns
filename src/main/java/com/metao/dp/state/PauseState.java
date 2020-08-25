@@ -1,4 +1,4 @@
-package com.metao.dp.state;
+package com.metao.dp.state.another;
 
 /**
  * Concrete states provide the special implementation for all interface methods.

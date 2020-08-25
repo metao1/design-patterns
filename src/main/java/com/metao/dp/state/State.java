@@ -1,4 +1,4 @@
-package com.metao.dp.state;
+package com.metao.dp.state.another;
 
 /**
  * Common interface for all states.
