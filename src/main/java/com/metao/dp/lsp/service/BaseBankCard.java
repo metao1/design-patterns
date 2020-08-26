@@ -1,11 +1,11 @@
 package com.metao.dp.lsp.service;
 
-import com.metao.dp.lsp.exception.PaymentInstrumentInvalidException;
-import com.metao.dp.lsp.service.validator.PaymentInstrumentValidator;
-import com.metao.dp.lsp.model.PaymentResponse;
 import com.metao.dp.lsp.exception.FraudDetectedException;
 import com.metao.dp.lsp.exception.PaymentFailedException;
+import com.metao.dp.lsp.exception.PaymentInstrumentInvalidException;
 import com.metao.dp.lsp.model.PaymentGatewayResponse;
+import com.metao.dp.lsp.model.PaymentResponse;
+import com.metao.dp.lsp.service.validator.PaymentInstrumentValidator;
 
 import java.util.Date;
 
@@ -14,10 +14,9 @@ public abstract class BaseBankCard implements PaymentInstrument {
   String cardNumber;
   String verificationCode;
   Date expiryDate;
-  String fingerprint;
-  PaymentInstrumentValidator basicValidator;
-  FraudChecker fraudChecker;
-  PaymentGatewayHandler gatewayHandler;
+  protected FraudChecker fraudChecker;
+  protected PaymentGatewayHandler gatewayHandler;
+  protected PaymentInstrumentValidator basicValidator;
 
   public BaseBankCard(String name,
                       String cardNumber,
