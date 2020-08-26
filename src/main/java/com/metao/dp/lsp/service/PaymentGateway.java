@@ -1,4 +1,6 @@
-package com.metao.dp.lsp;
+package com.metao.dp.lsp.service;
+
+import com.metao.dp.lsp.exception.PaymentFailedException;
 
 import java.util.Date;
 import java.util.UUID;

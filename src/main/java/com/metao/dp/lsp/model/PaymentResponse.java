@@ -1,6 +1,6 @@
-package com.metao.dp.lsp;
+package com.metao.dp.lsp.model;
 
-class PaymentResponse {
+public class PaymentResponse {
     private String identifier;
 
     public String getIdentifier() {

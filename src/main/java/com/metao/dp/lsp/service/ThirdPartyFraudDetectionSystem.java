@@ -1,4 +1,6 @@
-package com.metao.dp.lsp;
+package com.metao.dp.lsp.service;
+
+import com.metao.dp.lsp.exception.FraudDetectedException;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package com.metao.dp.lsp;
+package com.metao.dp.lsp.model;
 
 public class OrderDetails {
   String orderNumber;

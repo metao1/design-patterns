@@ -1,6 +1,6 @@
-package com.metao.dp.lsp;
+package com.metao.dp.lsp.model;
 
-class PaymentGatewayResponse {
+public class PaymentGatewayResponse {
   String fingerprint;
 
   public void setFingerprint(String fingerprint) {

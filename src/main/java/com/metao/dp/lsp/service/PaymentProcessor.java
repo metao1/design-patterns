@@ -1,7 +1,12 @@
-package com.metao.dp.lsp;
+package com.metao.dp.lsp.service;
 
-class PaymentProcessor {
-  void process(OrderDetails orderDetails, PaymentInstrument paymentInstrument) {
+import com.metao.dp.lsp.exception.PaymentInstrumentInvalidException;
+import com.metao.dp.lsp.model.PaymentResponse;
+import com.metao.dp.lsp.exception.PaymentFailedException;
+import com.metao.dp.lsp.model.OrderDetails;
+
+public class PaymentProcessor {
+  public void process(OrderDetails orderDetails, PaymentInstrument paymentInstrument) {
     try {
       paymentInstrument.validate();
       PaymentResponse response = paymentInstrument.collectPayment();

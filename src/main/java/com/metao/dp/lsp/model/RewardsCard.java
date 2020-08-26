@@ -1,6 +1,11 @@
-package com.metao.dp.lsp;
+package com.metao.dp.lsp.model;
 
-class RewardsCard implements PaymentInstrument {
+import com.metao.dp.lsp.exception.PaymentFailedException;
+import com.metao.dp.lsp.exception.PaymentInstrumentInvalidException;
+import com.metao.dp.lsp.model.PaymentResponse;
+import com.metao.dp.lsp.service.PaymentInstrument;
+
+public class RewardsCard implements PaymentInstrument {
     private final String name;
     private final String cardNumber;
 
