@@ -12,6 +12,7 @@ public class DepthFirstSearch {
         Vertex v3 = Vertex.build("3");
         Vertex v4 = Vertex.build("4");
         Vertex v5 = Vertex.build("5");
+
         v1.setConnection(v2.setConnection(v3, v4), v5);
         dfs(v1);
     }

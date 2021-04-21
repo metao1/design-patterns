@@ -1,6 +1,6 @@
 package com.metao.dp.factory;
 
-public abstract class Dialog {
+public abstract class Dialog implements Button {
 
     public void renderWindow() {
         // ... other code ...

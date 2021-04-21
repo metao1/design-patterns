@@ -6,4 +6,14 @@ public class WindowsDialog extends Dialog {
     public Button createButton() {
         return new WindowsButton();
     }
+
+    @Override
+    public void render() {
+
+    }
+
+    @Override
+    public void onClick() {
+
+    }
 }

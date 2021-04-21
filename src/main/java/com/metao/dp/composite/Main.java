@@ -1,18 +1,27 @@
 package com.metao.dp.composite;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.awt.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        String[] array = {"name1","name2","name3","name4", "name5", "name2"};
-        Map<String, Long> collect = Arrays.stream(array)
-                .collect(Collectors.groupingBy(s -> s, Collectors.counting()));
-        collect.forEach((k, v) -> {
-            System.out.println(v);
-        });
+        ImageEditor editor = new ImageEditor();
 
+        editor.loadShapes(
+                new Circle(10, 10, 10, Color.BLUE),
+
+                new CompoundShape(
+                        new Circle(110, 110, 50, Color.RED),
+                        new Dot(160, 160, Color.RED)
+                ),
+
+                new CompoundShape(
+                        new Rectangle(250, 250, 100, 100, Color.GREEN),
+                        new Dot(240, 240, Color.GREEN),
+                        new Dot(240, 360, Color.GREEN),
+                        new Dot(360, 360, Color.GREEN),
+                        new Dot(360, 240, Color.GREEN)
+                )
+        );
     }
 }

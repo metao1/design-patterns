@@ -6,4 +6,14 @@ public class HtmlDialog extends Dialog {
     public Button createButton() {
         return new HtmlButton();
     }
+
+    @Override
+    public void render() {
+
+    }
+
+    @Override
+    public void onClick() {
+
+    }
 }

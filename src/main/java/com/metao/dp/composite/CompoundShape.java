@@ -6,20 +6,27 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CompoundShape extends BaseShape {
+    protected List<Shape> children = new ArrayList<>();
 
-    private List<Shape> children = new ArrayList<>();
-
-    public CompoundShape(Shape... shapes) {
+    public CompoundShape(Shape... components) {
         super(0, 0, Color.BLACK);
-        add(shapes);
+        add(components);
     }
 
-    public void add(Shape... shapes) {
-        children.addAll(Arrays.asList(shapes));
+    public void add(Shape component) {
+        children.add(component);
     }
 
-    public void remove(Shape... shapes) {
-        children.removeAll(Arrays.asList(shapes));
+    public void add(Shape... components) {
+        children.addAll(Arrays.asList(components));
+    }
+
+    public void remove(Shape child) {
+        children.remove(child);
+    }
+
+    public void remove(Shape... components) {
+        children.removeAll(Arrays.asList(components));
     }
 
     public void clear() {
@@ -32,7 +39,7 @@ public class CompoundShape extends BaseShape {
             return 0;
         }
         int x = children.get(0).getX();
-        for (final Shape child : children) {
+        for (Shape child : children) {
             if (child.getX() < x) {
                 x = child.getX();
             }
@@ -42,11 +49,11 @@ public class CompoundShape extends BaseShape {
 
     @Override
     public int getY() {
-        if (children.isEmpty()) {
+        if (children.size() == 0) {
             return 0;
         }
         int y = children.get(0).getY();
-        for (final Shape child : children) {
+        for (Shape child : children) {
             if (child.getY() < y) {
                 y = child.getY();
             }
@@ -58,7 +65,7 @@ public class CompoundShape extends BaseShape {
     public int getWidth() {
         int maxWidth = 0;
         int x = getX();
-        for (final Shape child : children) {
+        for (Shape child : children) {
             int childRelativeX = child.getX() - x;
             int childWidth = childRelativeX + child.getWidth();
             if (childWidth > maxWidth) {
@@ -72,9 +79,9 @@ public class CompoundShape extends BaseShape {
     public int getHeight() {
         int maxHeight = 0;
         int y = getY();
-        for (final Shape child : children) {
-            int childRelativeY = child.getY() - y;
-            int childHeight = childRelativeY + child.getWidth();
+        for (Shape child : children) {
+            int childsRelativeY = child.getY() - y;
+            int childHeight = childsRelativeY + child.getHeight();
             if (childHeight > maxHeight) {
                 maxHeight = childHeight;
             }
@@ -84,14 +91,14 @@ public class CompoundShape extends BaseShape {
 
     @Override
     public void move(int x, int y) {
-        for (final Shape child : children) {
+        for (Shape child : children) {
             child.move(x, y);
         }
     }
 
     @Override
     public boolean isInsideBound(int x, int y) {
-        for (final Shape child : children) {
+        for (Shape child : children) {
             if (child.isInsideBound(x, y)) {
                 return true;
             }
@@ -102,20 +109,31 @@ public class CompoundShape extends BaseShape {
     @Override
     public void unSelect() {
         super.unSelect();
-        for (final Shape child : children) {
+        for (Shape child : children) {
             child.unSelect();
         }
     }
 
-    @Override
-    public void select() {
-        super.select();
-        for (final Shape child : children) {
-            child.select();
+    public boolean selectChildAt(int x, int y) {
+        for (Shape child : children) {
+            if (child.isInsideBound(x, y)) {
+                child.select();
+                return true;
+            }
         }
+        return false;
     }
 
-    public void setChildren(List<Shape> children) {
-        this.children = children;
+    @Override
+    public void paint(Graphics graphics) {
+        if (isSelected()) {
+            enableSelectionStyle(graphics);
+            graphics.drawRect(getX() - 1, getY() - 1, getWidth() + 1, getHeight() + 1);
+            disableSelectionStyle(graphics);
+        }
+
+        for (Shape child : children) {
+            child.paint(graphics);
+        }
     }
 }

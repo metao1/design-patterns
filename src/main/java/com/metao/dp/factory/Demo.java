@@ -1,6 +1,6 @@
 package com.metao.dp.factory;
 
-public class Demo {
+public class Demo extends WindowsDialog {
     private static Dialog dialog;
 
     public static void main(String[] args) {

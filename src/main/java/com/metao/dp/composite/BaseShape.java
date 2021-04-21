@@ -6,7 +6,7 @@ public class BaseShape implements Shape {
 
     public int x;
     public int y;
-    private Color color;
+    private final Color color;
     private boolean selected = false;
 
     public BaseShape(int x, int y, Color color) {
@@ -66,13 +66,13 @@ public class BaseShape implements Shape {
     @Override
     public void paint(Graphics graphics) {
         if (isSelected()) {
-            enableSelectionStype(graphics);
+            enableSelectionStyle(graphics);
         } else {
             disableSelectionStyle(graphics);
         }
     }
 
-    private void enableSelectionStype(Graphics graphics) {
+    void enableSelectionStyle(Graphics graphics) {
         graphics.setColor(Color.LIGHT_GRAY);
         Graphics2D g2 = (Graphics2D) graphics;
         float[] dash1 = {2.0f};
@@ -83,7 +83,7 @@ public class BaseShape implements Shape {
         ));
     }
 
-    private void disableSelectionStyle(Graphics graphics) {
+    void disableSelectionStyle(Graphics graphics) {
         graphics.setColor(color);
         Graphics2D g2 = (Graphics2D) graphics;
         g2.setStroke(new BasicStroke());
