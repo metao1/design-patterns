@@ -29,8 +29,8 @@ public class SagaApplication {
   private static ServiceDiscoveryService serviceDiscovery() {
     return new ServiceDiscoveryService()
             .discover(new OrderService())
-            .discover(new FlyBookingService())
             .discover(new HotelBookingService())
-            .discover(new WithdrawMoneyService());
+            .discover(new WithdrawMoneyService())
+            .discover(new FlyBookingService());
   }
 }

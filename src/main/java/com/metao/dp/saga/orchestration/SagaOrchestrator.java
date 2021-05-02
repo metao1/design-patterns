@@ -8,8 +8,7 @@ public class SagaOrchestrator {
   private final Saga saga;
   private final ServiceDiscoveryService sd;
   private final CurrentState state;
-
-
+  private Subject<String> subjectHandler;
   /**
    * Create a new service to orchetrate sagas.
    *
@@ -20,6 +19,11 @@ public class SagaOrchestrator {
     this.saga = saga;
     this.sd = sd;
     this.state = new CurrentState();
+    subjectHandler = new StringObserverHandler();
+
+    subjectHandler.registerObserver(s -> {
+
+    });
   }
 
   /**
@@ -34,9 +38,9 @@ public class SagaOrchestrator {
     System.out.println(" The new saga is about to start");
     var result = FINISHED;
     K tempVal = value;
-
-    while (true) {
-      var next = state.current();
+    var next = state.current();
+    while (saga.isPresent(next)) {
+      next = state.current();
       var ch = saga.get(next);
       var srvOpt = sd.find(ch.name);
 
@@ -66,15 +70,9 @@ public class SagaOrchestrator {
           next = state.back();
         }
       }
-
-
-      if (!saga.isPresent(next)) {
-        return state.isForward() ? FINISHED : result == CRASHED ? CRASHED : ROLLBACK;
-      }
     }
-
+    return state.isForward() ? FINISHED : result == CRASHED ? CRASHED : ROLLBACK;
   }
-
 
   private static class CurrentState {
     int currentNumber;
