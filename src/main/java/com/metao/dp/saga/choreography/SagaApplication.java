@@ -29,7 +29,7 @@ public class SagaApplication {
     return sd
             .discover(new OrderService(sd))
             .discover(new FlyBookingService(sd))
-            .discover(new HotelBookingService(sd))
-            .discover(new WithdrawMoneyService(sd));
+            .discover(new WithdrawMoneyService(sd))
+            .discover(new HotelBookingService(sd));
   }
 }

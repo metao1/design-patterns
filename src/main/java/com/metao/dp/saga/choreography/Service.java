@@ -56,8 +56,7 @@ public abstract class Service implements ChoreographyChapter {
   public Saga process(Saga saga) {
     var inValue = saga.getCurrentValue();
     System.out.printf("The chapter '%s' has been started. "
-                    + "The data %s has been stored or calculated successfully.%n",
-            getName(), inValue);
+                    + "The data %s has been stored or calculated successfully.%n", getName(), inValue);
     saga.setCurrentStatus(Saga.ChapterResult.SUCCESS);
     saga.setCurrentValue(inValue);
     return saga;
